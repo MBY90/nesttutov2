@@ -2,9 +2,8 @@ import { Module } from '@nestjs/common';
 import { CustomersModule } from './customers/customers.module';
 import { UsersModule } from './users/users.module';
 import {TypeOrmModule} from '@nestjs/typeorm';
-
-
-
+import { AuthModule } from './auth/auth.module';
+import entities from './typeorm';
 @Module({
   imports: [
      CustomersModule,
@@ -16,9 +15,10 @@ import {TypeOrmModule} from '@nestjs/typeorm';
      username:'root',
      password:'',
      database: 'test',
-     entities: [],
+     entities,
      synchronize: true,
-  })],
+  }),
+     AuthModule],
   controllers: [],
   providers: [],
 })

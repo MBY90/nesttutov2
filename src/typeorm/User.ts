@@ -6,10 +6,19 @@ export class User{
         name:'user_id',
     })
     id:number
-    @Column()
+    @Column({
+      nullable:false,
+      default:''
+    })
     username:string
-  @Column()
+  @Column({
+    nullable:true,
+    default:''
+  })
     email:string
-  @Column()
+  @Column({
+    nullable:false,
+    default:''
+  })
   password:string
 }
