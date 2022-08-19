@@ -4,9 +4,10 @@ import { User } from 'src/typeorm';
 import { UsersService } from 'src/users/services/users/users.service';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
-
+import {PassportModule} from '@nestjs/passport';
+import { LocalStrategy } from './utlis/LocalStrategy';
 @Module({
-  imports:[TypeOrmModule.forFeature([User])],
+  imports:[TypeOrmModule.forFeature([User]),PassportModule],
   controllers: [AuthController],
   providers: [{
     provide:'AUTH_SERVICE',
@@ -15,7 +16,8 @@ import { AuthService } from './auth.service';
 {
   provide:'USER_SERVICE', 
   useClass:UsersService
-}
+},
+LocalStrategy,
 ]
 })
 export class AuthModule {}

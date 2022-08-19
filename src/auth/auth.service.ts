@@ -7,10 +7,13 @@ export class AuthService {
 
     }
     async validateUser(username:string,password:string){
+        console.log('inside validated user')
 const userDB=await this.userSerice.findUserByUserName(username)
-if(userDB){
-    console.log(userDB);
+if(userDB && userDB.password===password){
+    console.log("success" );
+    return  userDB
 }
+return null
     }
 }
  
